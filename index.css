@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  font-family: "Libre Franklin", serif;
+  font-size: 16px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  background-color: rgb(247, 247, 247);
+}
+
+p {
+  font-weight: 600;
+  font-size: 24px;
+  color: #424141; 
+}
+
+.button {
+  background-color: #C6A0F6; /* Green */
+  border:2px solid 10px;
+  border-radius: 12px;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
