@@ -1,80 +1,54 @@
-const catImg = document.getElementById('cat_image');
+let Allcatbreeds = []
 
-async function getCat() {
-  const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=10?has_breeds=1&api_key=live_U53C7RuoG4NdjpCk3wlbWPkWE8drqRGbUe9QSXrPLlgOA1ZY2ic5RO5tUIMs6Gef')
-  const data = await response.json(); 
-  return data[0];
+async function getBreed() {
+  const response = await fetch("https://api.thecatapi.com/v1/breeds")
+  const data = await response.json()
+  console.log("data: ", data);
+  
+  //all breeds and details are in one Array
+  //console.log(Array.isArray(data));
+
+  const breedSection = document.getElementById("breed");
+
+  Allcatbreeds = data;
+
+  //loop through the list and grab each breed)
+  for (let i = 0; i < data.length; i++) {
+    const eachBreed = Allcatbreeds[i];
+    //console.log(eachBreed.name);
+    //console.log(data);
+    //console.log(eachBreed.id);
+
+    //DOM selectors - get the div, then get the select element, then create the options list
+    const catSection = document.getElementById("breed");
+    const selectOption = catSection.querySelector("select");
+    const catOption = document.createElement("option");
+
+    //add each breed name as an option to the list
+    catOption.value = eachBreed.id;
+    catOption.innerHTML = `${eachBreed.name}`;
+    selectOption.appendChild(catOption);
+  }
 }
 
-async function handleClick() {
-  const img = await getCat();
-  catImg.src = img.url;
+getBreed();
+
+async function getCatDetails(x) {
+  //console.log("Selected x breed:", x)
+  const response = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${x}&api_key=live_U53C7RuoG4NdjpCk3wlbWPkWE8drqRGbUe9QSXrPLlgOA1ZY2ic5RO5tUIMs6Gef`)
+  //console.log("response:", response);
+  const data = await response.json()
+  console.log("All data:", data);
+  //console.log("data url:", data[0].url);
+
+  const cat_image = document.querySelector("#cat-image");
+  //console.log("Cat image:", cat_image);
+
+  cat_image.classList.remove('hidden');
+  cat_image.src = data[0].url;
+
+  document.getElementById("description").textContent = `Description: ${data[0].breeds[0].description}`;
+  document.getElementById("temperament").textContent = `Temperament: ${data[0].breeds[0].temperament}`;
+  document.getElementById("origin").textContent = `Country of Origin: ${data[0].breeds[0].origin}`;
+  
 }
-
-//I don't know how to pull in breed or another data point from the link above
-// async function getBreed() {
-//   const response = await fetch ()
-//   const data = await response.json();
-//   return console.log(data);
-// }
-
-//
-
-
-
-
-
-
-// const baseURL = "https://api.thecatapi.com/v1/breeds"
-// const api_key = live_U53C7RuoG4NdjpCk3wlbWPkWE8drqRGbUe9QSXrPLlgOA1ZY2ic5RO5tUIMs6Gef
-
-// let storedBreeds = [];
-
-// // a function to select a random breed
-
-// function getRandomInt(min, max) {
-// return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
-
-// // a function to show images and information of the breeds
-// function showCatImageAndInformation(index) {
-
-// // This will display the image of the cat
-//   document.getElementById("cat_image").src = storedBreeds[index].image.url;
-
-// // This will get the breed name
-//   document.getElementById("breed_name").innerHTML = storedBreeds[index].name;
-
-// // This will get the wiki link
-//   document.getElementById("wiki_link").href = storedBreeds[index].wikipedia_url;
-
-//   document.getElementById("wiki_link").innerHTML =
-//     storedBreeds[index].wikipedia_url;  
-
-// // This will get the characteristics of the cat
-//   document.getElementById("breed_json").textContent =
-//     storedBreeds[index].temperament;
-// }
-
-
-// // a function to retrieve data from the API
-// fetch(url, {
-//   headers: {
-//     "x-api-key": api_key,
-//   },
-// })
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     // Storing the retrieved data from the API in our variable
-//     storedBreeds = data;
-
-
-//     // Using the random function to select a specific breed. Then extracting information from that breed
-//     showCatImageAndInformation(getRandomInt(0, storedBreeds.length - 1));
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });

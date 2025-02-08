@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Cats are Great!</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <link rel="stylesheet" type="text/css" href="index.css"
 </head>
 <body>
-    <p>What kind of cat is it?</p>
-    <div>
-      <button class = "button" onClick = "handleClick()"> GET CAT IMAGE </button>
-    </div>
 
-    <img id="cat_image" alt="A cat image">
+  <h1>Cat Breed Generator</h1>
 
-  <script src="index.js"></script>  
+  <p id="intro">Select a cat breed below to see a cat photo and some fun facts!</p>
+
+  <div id="breed">  
+    <select onchange="getCatDetails(value)">
+      <option value="">Select a cat breed</option>
+    </select>
+  </div>
+
+  <div id="cat-details">
+    
+    <p id="description"></p>
+
+    <p id="temperament"></p>
+
+    <p id="origin"></p>
+  </div>
+
+
+  <img class ="hidden" id="cat-image" src="" alt="A cat"></img>
+
+<script src="index.js"></script>
 </body>
 </html>

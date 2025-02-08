@@ -1,3 +1,4 @@
+
 body {
   display: flex;
   font-family: "Libre Franklin", serif;
@@ -6,24 +7,41 @@ body {
   flex-direction: column;
   align-items: center;
   margin: auto;
-  background-color: rgb(247, 247, 247);
+  background:linear-gradient(rgba(255, 255, 255, 0.6), rgba(255,255,255,0.6)), url(image/v567-adj-20-doodles.jpg);
+  background-size: cover;
+}
+
+#breed select {
+  font-size: 1rem;
+}
+
+#breed select:hover {
+  box-shadow: 0px 0px 10px 0px gray
+}
+
+#cat-image {
+  margin-top: 20px;
+  min-width: 300px;
+  max-width: 1200px;
+  width: 80%;
+  height: 80%;
+}
+
+.hidden {
+display: none;
 }
 
 p {
+  font-family: "Libre Franklin", serif;
+  font-size: 20px;
   font-weight: 600;
-  font-size: 24px;
-  color: #424141; 
+  background-color: rgb(255, 255, 255,0.8);
 }
 
-.button {
-  background-color: #C6A0F6; /* Green */
-  border:2px solid 10px;
-  border-radius: 12px;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 40px;
+#intro {
+  margin: 0px 300px 15px 300px;
+}
+
+#cat-details {
+  margin: 0px 300px 0px 300px;
 }
