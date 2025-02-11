@@ -1,22 +1,66 @@
-
 body {
-  display: flex;
-  font-family: "Libre Franklin", serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  background:linear-gradient(rgba(255, 255, 255, 0.6), rgba(255,255,255,0.6)), url(image/v567-adj-20-doodles.jpg);
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255,255,255,0.6)), url(image/v567-adj-20-doodles.jpg);
   background-size: cover;
+  text-align: center;
 }
 
-#breed select {
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+} 
+
+#intro {
+  margin: 0 20% 0 20%;
+  border-radius: 5px;
+  background: white, 0.5;
+}
+
+#intro p {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #636A78;
+  display: inline;
+}
+
+#cat-details {
+  margin: 0 30% 0 30%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  background: white, 0.5;
+  color: #636A78;
+}
+
+/* breed selector */
+#breed-selectdiv {
+  font-size: 18px;
+  margin-top: 1%;
+}
+
+/* font in the selector */
+#breed-selectdiv select {
   font-size: 1rem;
+  border-color: gray;
+  border-radius: 3px;
 }
 
-#breed select:hover {
+select:first-child
+{
+color:gray;
+}
+
+option {
+  color: black;
+}
+
+#breed-selectdiv select:hover {
   box-shadow: 0px 0px 10px 0px gray
+}
+
+/* hide the broken image icon at first, JS removes class once image is fetched*/
+.hidden {
+  display: none;
 }
 
 #cat-image {
@@ -27,21 +71,38 @@ body {
   height: 80%;
 }
 
-.hidden {
-display: none;
-}
 
-p {
-  font-family: "Libre Franklin", serif;
-  font-size: 20px;
+a {
+  color: #F19438;
   font-weight: 600;
-  background-color: rgb(255, 255, 255,0.8);
 }
 
-#intro {
-  margin: 0px 300px 15px 300px;
+/* hide the broken image icon at first, JS removes class once image is fetched*/
+ @media screen and (max-width: 768px) {
+  #cat-details {
+    margin: 0 5% 0 5%;
+  }
+
+  #intro {
+    margin: 0 5% 0 5%;
+ }
 }
 
-#cat-details {
-  margin: 0px 300px 0px 300px;
-}
+ @media screen and (max-width: 320px) {
+  p {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  #breed-selectdiv {
+    font-size: 15px;
+    margin-top: 1%;
+  }
+
+  #cat-details, #intro { 
+    margin: 0 5% 0 5%;
+  }
+ }
